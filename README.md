@@ -15,7 +15,8 @@ In addition to the known JNDI attack methods(via remote classloading in referenc
 
 ### Supported payloads
 * [RemoteReference.java](/src/main/java/artsploit/controllers/RemoteReference.java) - classic JNDI attack, leads to RCE via remote classloading, works up to jdk8u191 
-* [Tomcat.java](/src/main/java/artsploit/controllers/Tomcat.java) - leads to RCE via unsafe reflection in **org.apache.naming.factory.BeanFactory** 
+* **Custom** [Tomcat.java](/src/main/java/artsploit/controllers/Tomcat.java) - leads to RCE via unsafe reflection in **org.apache.naming.factory.BeanFactory**
+* [Tomcat2.java](/src/main/java/artsploit/controllers/Tomcat2.java) - leads to RCE (reverse shell) via unsafe reflection in **org.apache.naming.factory.BeanFactory** 
 * [Groovy.java](/src/main/java/artsploit/controllers/Groovy.java) - leads to RCE via unsafe reflection in **org.apache.naming.factory.BeanFactory** + **groovy.lang.GroovyShell**
 * [WebSphere1.java](/src/main/java/artsploit/controllers/WebSphere1.java) - leads to OOB XXE in **com.ibm.ws.webservices.engine.client.ServiceFactory**
 * [WebSphere2.java](/src/main/java/artsploit/controllers/WebSphere2.java) - leads to RCE via classpath manipulation in **com.ibm.ws.client.applicationclient.ClientJ2CCFFactory**
@@ -39,7 +40,9 @@ Usage: java -jar target/RogueJndi-1.0.jar [options]
                    (default: /list.wsdl)
     --localjar     [websphere2 payload option] Local jar file to load (this 
                    file should be located on the remote server) (default: 
-                   ../../../../../tmp/jar_cache7808167489549525095.tmp) 
+                   ../../../../../tmp/jar_cache7808167489549525095.tmp)
+    --lhost        Host listening for reverse shell (default: 127.0.0.1)
+    --lport        Port listening for reverse shell (default: 4444) 
     -h, --help     Show this help
 ```
 The most important parameters are the ldap server hostname (-n, should be accessible from the target) and the command you want to execute on the target server (-c).
