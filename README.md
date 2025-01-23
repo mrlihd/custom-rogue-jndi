@@ -15,7 +15,7 @@ In addition to the known JNDI attack methods(via remote classloading in referenc
 
 ### Supported payloads
 * [RemoteReference.java](/src/main/java/artsploit/controllers/RemoteReference.java) - classic JNDI attack, leads to RCE via remote classloading, works up to jdk8u191 
-* Tomcat.java](/src/main/java/artsploit/controllers/Tomcat.java) - leads to RCE via unsafe reflection in **org.apache.naming.factory.BeanFactory**
+* [Tomcat.java](/src/main/java/artsploit/controllers/Tomcat.java) - leads to RCE via unsafe reflection in **org.apache.naming.factory.BeanFactory**
 * **Custom** [[Tomcat2.java](/src/main/java/artsploit/controllers/Tomcat2.java) - leads to RCE (reverse shell) via unsafe reflection in **org.apache.naming.factory.BeanFactory** 
 * [Groovy.java](/src/main/java/artsploit/controllers/Groovy.java) - leads to RCE via unsafe reflection in **org.apache.naming.factory.BeanFactory** + **groovy.lang.GroovyShell**
 * [WebSphere1.java](/src/main/java/artsploit/controllers/WebSphere1.java) - leads to OOB XXE in **com.ibm.ws.webservices.engine.client.ServiceFactory**
