@@ -18,7 +18,7 @@ public class Config {
 
     static {
         try { //try to get the local hostname by default
-            hostname = InetAddress.getLocalHost().getHostAddress();
+            hostname = InetAddress.getLocalHost().getHostAddress().toString();
         } catch (UnknownHostException e) {
             hostname = "127.0.0.1";
         }
@@ -36,6 +36,12 @@ public class Config {
     @Parameter(names = {"--localjar"}, description = "[websphere2 payload option] Local jar file to load " +
                     "(this file should be located on the remote server)", order = 5)
     public static String localjar = "../../../../../tmp/jar_cache7808167489549525095.tmp";
+
+    @Parameter(names = {"--lhost"}, description = "Host listening for reverse shell", order = 6)
+    public static String lhost = "127.0.0.1";
+
+    @Parameter(names = {"--lport"}, description = "Port listening for reverse shell", order = 7)
+    public static String lport = "4444";
 
     @Parameter(names = {"-h", "--help"}, help = true, description = "Show this help")
     private static boolean help = false;
